@@ -1,0 +1,10 @@
+﻿const fs=require('fs');
+const t=fs.readFileSync('site-mirror/assets/index-WFSmNqA8.js','utf8');
+const routes=[...new Set([...t.matchAll(/path:\s*"(\/[^"\\]{0,60})"/g)].map(m=>m[1]))];
+console.log('ROUTES('+routes.length+'):');
+console.log(routes.sort().join('\n'));
+const jwts=[...new Set([...t.matchAll(/eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{5,}/g)].map(m=>m[0]))];
+console.log('\nJWTLIKE('+jwts.length+'):');
+jwts.forEach(j=>console.log(j.slice(0,50)+'... len='+j.length));
+const sb=[...new Set([...t.matchAll(/https:\/\/[a-z0-9]+\.supabase\.co/g)].map(m=>m[0]))];
+console.log('\nSUPABASE:',sb.join(', '));

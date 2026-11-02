@@ -1,0 +1,14 @@
+{
+  "name": "douzhi-me-mirror",
+  "private": true,
+  "version": "0.1.0",
+  "description": "www.douzhi.me 公开静态资源镜像 + 可读化源码，仅供个人学习研究",
+  "scripts": {
+    "serve": "node server.js 5173",
+    "extract-assets": "node tools/extract-assets.js",
+    "summary": "node tools/summary.js",
+    "docs": "node tools/make-docs.js",
+    "verify": "powershell -NoProfile -ExecutionPolicy Bypass -File tools/render-check.ps1",
+    "beautify": "prettier --write --parser babel --print-width 110 --no-config src-readable/index.pretty.js && prettier --write --parser css --print-width 120 --no-config src-readable/index.pretty.css"
+  }
+}
